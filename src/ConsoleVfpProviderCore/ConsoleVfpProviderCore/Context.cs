@@ -7,16 +7,22 @@ using VfpEntityFrameworkProvider;
 namespace ConexaoVFPCore
 {
     [DbConfigurationType(typeof(VfpDbConfiguration))]
-    public class DadoContext : DbContext
+    public class Context : DbContext
     {
-        public IDbSet<Sinca> Sinca { get; set; }
-        public DadoContext(VfpConnection connection)
+        public IDbSet<TabelaTeste> Sinca { get; set; }
+
+        public Context()
+            : base(new VfpConnection(@"D:\GitHub\dados\SincaTeste.dbc"), true)
+        {
+        }
+
+        public Context(VfpConnection connection)
             : base(connection, true)
         {
 
         }
 
-        static DadoContext()
+        static Context()
         {
             Database.SetInitializer(new DataInitializer());
         }
