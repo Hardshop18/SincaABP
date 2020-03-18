@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Volo.Abp.Autofac" Version="2.0.1" />
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="2.0.1" />
+    <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Sinca.Application\Sinca.Application.csproj" />
+    <ProjectReference Include="..\..\Sinca.Domain.Shared\Sinca.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\Sinca.Domain\Sinca.Domain.csproj" />
+    <ProjectReference Include="..\..\Sinca.EntityFrameworkCore.DbMigrations\Sinca.EntityFrameworkCore.DbMigrations.csproj" />
+    <ProjectReference Include="..\..\Sinca.EntityFrameworkCore\Sinca.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\CadastroClienteView.xaml.cs">
+      <DependentUpon>CadastroClienteView.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ConsultaClienteView.xaml.cs">
+      <DependentUpon>ConsultaClienteView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+</Project>
