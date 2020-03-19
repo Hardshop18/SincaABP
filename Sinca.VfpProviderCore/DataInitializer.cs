@@ -1,31 +1,27 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Text;
 
 namespace Sinca.VfpProviderCore
 {
-    public class DataInitializer : DropCreateDatabaseAlways<Context>
+    public class DataInitializer : CreateDatabaseIfNotExists<Context>
     {
         protected override void Seed(Context context)
-        {
-            AddTabelaTestes(context);
+    {
+        AddTabelaTestes(context);
 
-            context.SaveChanges();
-        }
+        context.SaveChanges();
+    }
 
-        private static void AddTabelaTestes(Context context)
-        {
-            Enumerable.Range(0, 5)
-                      .Select(x => new TabelaTeste
-                      {
-                          id = x,
-                          nome = "Teste " + x
-                      })
-                      .ToList()
-                      .ForEach(x => context.TabelaTeste.Add(x));
-        }
+    private static void AddTabelaTestes(Context context)
+    {
+        Enumerable.Range(0, 5)
+                  .Select(x => new TabelaTeste
+                  {
+                      id = x,
+                      nome = "Teste " + x
+                  })
+                  .ToList()
+                  .ForEach(x => context.TabelaTeste.Add(x));
     }
 }
-
+}

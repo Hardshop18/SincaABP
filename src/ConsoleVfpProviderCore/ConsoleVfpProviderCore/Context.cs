@@ -20,12 +20,11 @@ namespace ConsoleVFPCore
         public Context(VfpConnection connection)
             : base(connection, true)
         {
-            var teste = TabelaTeste.Find(1);
-            if (teste == null)
-            {
-                TabelaTeste.Add(new TabelaTeste { id = 1, nome = "Teste 1" });
-                SaveChanges();
-            }
+        }
+
+        static Context()
+        {
+            Database.SetInitializer(new DataInitializer());
         }
     }
 }

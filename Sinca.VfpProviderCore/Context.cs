@@ -13,7 +13,6 @@ namespace Sinca.VfpProviderCore
         public Context(VfpConnection connection)
             : base(connection, true)
         {
-
         }
 
         static Context()
