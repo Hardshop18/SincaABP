@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Globalization;
 using System.Text;
 using VfpEntityFrameworkProvider;
 
-namespace ConexaoVFPCore
+namespace ConsoleVFPCore
 {
     [DbConfigurationType(typeof(VfpDbConfiguration))]
     public class Context : DbContext
     {
-        public IDbSet<TabelaTeste> Sinca { get; set; }
+        public IDbSet<TabelaTeste> TabelaTeste { get; set; }
 
         public Context()
             : base(new VfpConnection(@"D:\GitHub\dados\SincaTeste.dbc"), true)
@@ -19,12 +20,12 @@ namespace ConexaoVFPCore
         public Context(VfpConnection connection)
             : base(connection, true)
         {
-
-        }
-
-        static Context()
-        {
-            Database.SetInitializer(new DataInitializer());
+            var teste = TabelaTeste.Find(1);
+            if (teste == null)
+            {
+                TabelaTeste.Add(new TabelaTeste { id = 1, nome = "Teste 1" });
+                SaveChanges();
+            }
         }
     }
 }

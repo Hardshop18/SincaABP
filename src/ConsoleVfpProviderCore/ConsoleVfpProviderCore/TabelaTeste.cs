@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ConexaoVFPCore
+namespace ConsoleVFPCore
 {
     public class TabelaTeste
     {

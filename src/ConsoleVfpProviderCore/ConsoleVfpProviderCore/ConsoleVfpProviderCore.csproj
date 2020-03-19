@@ -14,4 +14,8 @@
     <PackageReference Include="VfpEntityFrameworkProvider2" Version="3.0.2-beta" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>
