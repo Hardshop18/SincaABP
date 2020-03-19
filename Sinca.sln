@@ -49,7 +49,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTeste", "src\Console
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinca.WPF", "src\Sinca.WPF\Sinca.WPF.csproj", "{6EF6778D-25C0-412A-8D79-7AA8B88B897E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinca.VfpProviderCore", "Sinca.VfpProviderCore\Sinca.VfpProviderCore.csproj", "{D4DA3BF6-8502-49B1-9D03-F424A4493179}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sinca.VfpProviderCore", "test\Sinca.VfpProviderCore\Sinca.VfpProviderCore.csproj", "{D4DA3BF6-8502-49B1-9D03-F424A4493179}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleVfpProviderCore", "src\ConsoleVfpProviderCore\ConsoleVfpProviderCore\ConsoleVfpProviderCore.csproj", "{F0499712-33BF-4EC8-9542-31B25861D018}"
 EndProject
