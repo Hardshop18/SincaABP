@@ -6,10 +6,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Volo.Abp.Autofac" Version="2.0.1" />
-    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="2.0.1" />
-    <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />  
-    <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+    <PackageReference Include="Volo.Abp.Autofac" Version="2.3.0" />
+    <PackageReference Include="Volo.Abp.Ddd.Domain" Version="2.3.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />  
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
   </ItemGroup>
 
   <ItemGroup>

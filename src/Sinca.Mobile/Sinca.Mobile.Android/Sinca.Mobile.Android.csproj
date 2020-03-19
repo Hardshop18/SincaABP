@@ -54,10 +54,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Autofac">
-      <Version>4.9.4</Version>
+      <Version>5.1.2</Version>
     </PackageReference>
     <PackageReference Include="Autofac.Extras.DynamicProxy">
-      <Version>4.5.0</Version>
+      <Version>5.0.0</Version>
     </PackageReference>
     <PackageReference Include="AutoMapper">
       <Version>9.0.0</Version>
@@ -69,89 +69,89 @@
       <Version>2.0.21-alpha</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore">
-      <Version>3.1.0</Version>
+      <Version>3.1.2</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Relational">
-      <Version>3.1.0</Version>
+      <Version>3.1.2</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.Account.Application">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.Account.Application.Contracts">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.Auditing">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.AuditLogging.Domain">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.AuditLogging.Domain.Shared">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.AuditLogging.EntityFrameworkCore">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.Authorization">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.Autofac">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.AutoMapper">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.BackgroundJobs">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.BackgroundJobs.Abstractions">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.BackgroundJobs.Domain">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.BackgroundJobs.Domain.Shared">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.BackgroundJobs.EntityFrameworkCore">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.BackgroundWorkers">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.Caching">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.Castle.Core">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.Core">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.Data">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.Ddd.Application">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.Ddd.Application.Contracts">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.Users.EntityFrameworkCore">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.Validation">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
     <PackageReference Include="Volo.Abp.VirtualFileSystem">
-      <Version>2.0.1</Version>
+      <Version>2.3.0</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.2.0.709249" />
-    <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.1" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.2.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.396" />
+    <PackageReference Include="Xamarin.Android.Support.Core.Utils" Version="28.0.0.3" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.1" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
