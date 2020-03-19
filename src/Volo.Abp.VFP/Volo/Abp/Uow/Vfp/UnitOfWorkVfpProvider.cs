@@ -4,10 +4,10 @@ using Volo.Abp.Vfp;
 
 namespace Volo.Abp.Uow.Vfp
 {
-    public class UnitOfWorkVfpProvider<TMemoryDbContext> : IDatabaseProvider<TMemoryDbContext>
-        where TMemoryDbContext : VfpContext
+    public class UnitOfWorkVfpProvider<TVfpContext> : IDatabaseProvider<TVfpContext>
+        where TVfpContext : VfpContext
     {
-        public TMemoryDbContext DbContext { get; }
+        public TVfpContext DbContext { get; }
         
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly IConnectionStringResolver _connectionStringResolver;
@@ -16,7 +16,7 @@ namespace Volo.Abp.Uow.Vfp
         public UnitOfWorkVfpProvider(
             IUnitOfWorkManager unitOfWorkManager,
             IConnectionStringResolver connectionStringResolver,
-            TMemoryDbContext dbContext, 
+            TVfpContext dbContext, 
             VfpManager memoryDatabaseManager)
         {
             _unitOfWorkManager = unitOfWorkManager;
@@ -33,8 +33,8 @@ namespace Volo.Abp.Uow.Vfp
                 throw new AbpException($"A {nameof(IVfp)} instance can only be created inside a unit of work!");
             }
 
-            var connectionString = _connectionStringResolver.Resolve<TMemoryDbContext>();
-            var dbContextKey = $"{typeof(TMemoryDbContext).FullName}_{connectionString}";
+            var connectionString = _connectionStringResolver.Resolve<TVfpContext>();
+            var dbContextKey = $"{typeof(TVfpContext).FullName}_{connectionString}";
 
             var databaseApi = unitOfWork.GetOrAddDatabaseApi(
                 dbContextKey,

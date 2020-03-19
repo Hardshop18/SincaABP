@@ -9,8 +9,8 @@ using Volo.Abp.Vfp;
 
 namespace Volo.Abp.Domain.Repositories.Vfp
 {
-    public class VfpRepository<TMemoryDbContext, TEntity> : RepositoryBase<TEntity>, IVfpRepository<TEntity>
-        where TMemoryDbContext : VfpContext
+    public class VfpRepository<TVfpContext, TEntity> : RepositoryBase<TEntity>, IVfpRepository<TEntity>
+        where TVfpContext : VfpContext
         where TEntity : class, IEntity
     {
         //TODO: Add dbcontext just like mongodb implementation!
@@ -19,9 +19,9 @@ namespace Volo.Abp.Domain.Repositories.Vfp
 
         public virtual IVfp Database => DatabaseProvider.GetDatabase();
 
-        protected IDatabaseProvider<TMemoryDbContext> DatabaseProvider { get; }
+        protected IDatabaseProvider<TVfpContext> DatabaseProvider { get; }
 
-        public VfpRepository(IDatabaseProvider<TMemoryDbContext> databaseProvider)
+        public VfpRepository(IDatabaseProvider<TVfpContext> databaseProvider)
         {
             DatabaseProvider = databaseProvider;
         }
