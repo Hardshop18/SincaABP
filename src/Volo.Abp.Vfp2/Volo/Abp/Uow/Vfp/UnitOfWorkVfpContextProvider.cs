@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data.Entity;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
 using Volo.Abp.Data;
@@ -25,7 +26,7 @@ namespace Volo.Abp.Uow.Vfp2
             var unitOfWork = _unitOfWorkManager.Current;
             if (unitOfWork == null)
             {
-                throw new AbpException($"A {nameof(IVfpDatabase)} instance can only be created inside a unit of work!");
+                throw new AbpException($"A {nameof(Database)} instance can only be created inside a unit of work!");
             }
 
             var connectionString = _connectionStringResolver.Resolve<TVfpContext>();

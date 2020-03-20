@@ -17,6 +17,7 @@ using Volo.Abp.Vfp2;
 using Volo.Abp.MultiTenancy;
 using Volo.Abp.Reflection;
 using Volo.Abp.Threading;
+using System.Data.Entity;
 
 namespace Volo.Abp.Domain.Repositories.Vfp2
 {
@@ -26,9 +27,9 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
         where TVfpContext : IAbpVfpContext
         where TEntity : class, IEntity
     {
-        public virtual IMongoCollection<TEntity> Collection => DbContext.Collection<TEntity>();
+        public DbSet<TEntity> Collection;
 
-        public virtual IMongoDatabase Database => DbContext.Database;
+        public virtual Database Database => DbContext.Database;
 
         public virtual TVfpContext DbContext => DbContextProvider.GetDbContext();
 
@@ -60,10 +61,7 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
         {
             await ApplyAbpConceptsForAddedEntityAsync(entity);
 
-            await Collection.InsertOneAsync(
-                entity,
-                cancellationToken: GetCancellationToken(cancellationToken)
-            );
+            Collection.Add(entity);
 
             return entity;
         }
@@ -88,17 +86,7 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
             await TriggerDomainEventsAsync(entity);
 
             var oldConcurrencyStamp = SetNewConcurrencyStamp(entity);
-
-            var result = await Collection.ReplaceOneAsync(
-                CreateEntityFilter(entity, true, oldConcurrencyStamp),
-                entity,
-                cancellationToken: GetCancellationToken(cancellationToken)
-            );
-
-            if (result.MatchedCount <= 0)
-            {
-                ThrowOptimisticConcurrencyException();
-            }
+            Collection.Add(entity);
 
             return entity;
         }
@@ -109,44 +97,17 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
             CancellationToken cancellationToken = default)
         {
             await ApplyAbpConceptsForDeletedEntityAsync(entity);
-            var oldConcurrencyStamp = SetNewConcurrencyStamp(entity);
-
-            if (entity is ISoftDelete softDeleteEntity && !IsHardDeleted(entity))
-            {
-                softDeleteEntity.IsDeleted = true;
-                var result = await Collection.ReplaceOneAsync(
-                    CreateEntityFilter(entity, true, oldConcurrencyStamp),
-                    entity,
-                    cancellationToken: GetCancellationToken(cancellationToken)
-                );
-
-                if (result.MatchedCount <= 0)
-                {
-                    ThrowOptimisticConcurrencyException();
-                }
-            }
-            else
-            {
-                var result = await Collection.DeleteOneAsync(
-                    CreateEntityFilter(entity, true, oldConcurrencyStamp),
-                    GetCancellationToken(cancellationToken)
-                );
-
-                if (result.DeletedCount <= 0)
-                {
-                    ThrowOptimisticConcurrencyException();
-                }
-            }
+            Collection.Remove(entity);
         }
 
         public override async Task<List<TEntity>> GetListAsync(bool includeDetails = false, CancellationToken cancellationToken = default)
         {
-            return await GetMongoQueryable().ToListAsync(GetCancellationToken(cancellationToken));
+            return await GetVfpQueryable().ToListAsync(GetCancellationToken(cancellationToken));
         }
 
         public override async Task<long> GetCountAsync(CancellationToken cancellationToken = default)
         {
-            return await GetMongoQueryable().LongCountAsync(GetCancellationToken(cancellationToken));
+            return await GetVfpQueryable().LongCountAsync(GetCancellationToken(cancellationToken));
         }
 
         public override async Task DeleteAsync(
@@ -154,7 +115,7 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
             bool autoSave = false,
             CancellationToken cancellationToken = default)
         {
-            var entities = await GetMongoQueryable()
+            var entities = await GetVfpQueryable()
                 .Where(predicate)
                 .ToListAsync(GetCancellationToken(cancellationToken));
 
@@ -166,7 +127,7 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
 
         protected override IQueryable<TEntity> GetQueryable()
         {
-            return GetMongoQueryable();
+            return GetVfpQueryable();
         }
 
         public override async Task<TEntity> FindAsync(
@@ -174,12 +135,12 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
             bool includeDetails = true,
             CancellationToken cancellationToken = default)
         {
-            return await GetMongoQueryable()
+            return GetVfpQueryable()
                 .Where(predicate)
-                .SingleOrDefaultAsync(GetCancellationToken(cancellationToken));
+                .SingleOrDefault();
         }
 
-        public virtual IMongoQueryable<TEntity> GetMongoQueryable()
+        public virtual IQueryable<TEntity> GetVfpQueryable()
         {
             return ApplyDataFilters(
                 Collection.AsQueryable()
@@ -359,9 +320,9 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
             bool includeDetails = true,
             CancellationToken cancellationToken = default)
         {
-            return await Collection
+            return Collection
                 .Find(CreateEntityFilter(id, true))
-                .FirstOrDefaultAsync(GetCancellationToken(cancellationToken));
+                .FirstOrDefault();
         }
 
         public virtual Task DeleteAsync(
@@ -369,10 +330,8 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
             bool autoSave = false,
             CancellationToken cancellationToken = default)
         {
-            return Collection.DeleteOneAsync(
-                CreateEntityFilter(id),
-                GetCancellationToken(cancellationToken)
-            );
+            var entity = Collection.Find(id);
+            return Collection.Remove(entity);
         }
 
         protected override FilterDefinition<TEntity> CreateEntityFilter(TEntity entity, bool withConcurrencyStamp = false, string concurrencyStamp = null)

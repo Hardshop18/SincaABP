@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using Volo.Abp.Domain.Entities;
 
 namespace Volo.Abp.Domain.Repositories.Vfp2
@@ -6,9 +8,9 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
     public interface IVfpRepository<TEntity> : IRepository<TEntity>
         where TEntity : class, IEntity
     {
-        IVfpDatabase Database { get; }
+        Database Database { get; }
 
-        IVfpCollection<TEntity> Collection { get; }
+        DbSet<TEntity> Collection { get; }
 
         IQueryable<TEntity> GetVfpQueryable();
     }

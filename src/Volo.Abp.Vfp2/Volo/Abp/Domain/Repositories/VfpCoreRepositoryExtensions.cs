@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Repositories.Vfp2;
@@ -7,16 +8,16 @@ namespace Volo.Abp.Domain.Repositories
 {
     public static class VfpCoreRepositoryExtensions
     {
-        public static IVfpDatabase GetDatabase<TEntity, TKey>(this IBasicRepository<TEntity, TKey> repository)
+        public static IDatabase GetDatabase<TEntity, TKey>(this IBasicRepository<TEntity, TKey> repository)
             where TEntity : class, IEntity<TKey>
         {
             return repository.ToVfpRepository().Database;
         }
 
-        public static IVfpCollection<TEntity> GetCollection<TEntity, TKey>(this IBasicRepository<TEntity, TKey> repository)
+        public static IList<TEntity> GetCollection<TEntity, TKey>(this IBasicRepository<TEntity, TKey> repository)
             where TEntity : class, IEntity<TKey>
         {
-            return repository.ToVfpRepository().Collection;
+            return repository.ToVfpRepository().ToList();
         }
 
         public static IQueryable<TEntity> GetVfpQueryable<TEntity, TKey>(this IBasicRepository<TEntity, TKey> repository)

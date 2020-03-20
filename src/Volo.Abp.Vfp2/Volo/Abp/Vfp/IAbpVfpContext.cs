@@ -1,11 +1,13 @@
 using MongoDB.Driver;
+using System.Collections.Generic;
+using System.Data.Entity;
 
 namespace Volo.Abp.Vfp2
 {
     public interface IAbpVfpContext
     {
-        IVfpDatabase Database { get; }
+        Database Database { get; }
 
-        IVfpCollection<T> Collection<T>();
+        IList<T> Collection<T>();
     }
 }

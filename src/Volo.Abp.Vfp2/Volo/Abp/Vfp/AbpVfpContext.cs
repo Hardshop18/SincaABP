@@ -10,7 +10,7 @@ namespace Volo.Abp.Vfp2
     {
         public IVfpModelSource ModelSource { get; set; }
 
-        public IVfpDatabase Database { get; private set; }
+        public Database Database { get; private set; }
 
         public AbpVfpContext(string connection)
             : base(new VfpConnection(connection), true)
@@ -22,12 +22,12 @@ namespace Volo.Abp.Vfp2
 
         }
 
-        public virtual void InitializeDatabase(IVfpDatabase database)
+        public virtual void InitializeDatabase(Database database)
         {
             Database = database;
         }
 
-        public virtual IVfpCollection<T> Collection<T>()
+        public virtual DbSet<T> Collection<T>()
         {
             return Database.GetCollection<T>(GetCollectionName<T>());
         }

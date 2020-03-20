@@ -20,6 +20,7 @@ namespace ConsoleVFPCore
         public Context(VfpConnection connection)
             : base(connection, true)
         {
+            this.Database
         }
 
         static Context()
