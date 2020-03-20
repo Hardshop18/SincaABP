@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Volo.Abp.TestApp.Testing;
+﻿using Volo.Abp.TestApp.Testing;
 
 namespace Volo.Abp.Vfp2.DataFiltering
 {

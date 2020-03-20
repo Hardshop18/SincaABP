@@ -25,14 +25,14 @@ namespace Volo.Abp.Vfp2.Repositories
         [Fact]
         public async Task UpdateAsync()
         {
-            var person = await PersonRepository.GetAsync(TestDataBuilder.UserDouglasId);
+            var person = await PersonRepository.GetAsync(TestDataBuilder.UserDouglasId.ToString());
 
             person.ChangeName("Douglas-Updated");
-            person.Phones.Add(new Phone(person.Id, "6667778899", PhoneType.Office));
+            person.Phones.Add(new Phone(person.Id.ToString(), "6667778899", PhoneType.Office));
 
             await PersonRepository.UpdateAsync(person);
 
-            person = await PersonRepository.FindAsync(TestDataBuilder.UserDouglasId);
+            person = await PersonRepository.FindAsync(TestDataBuilder.UserDouglasId.ToString());
             person.ShouldNotBeNull();
             person.Name.ShouldBe("Douglas-Updated");
             person.Phones.Count.ShouldBe(3);
@@ -42,12 +42,12 @@ namespace Volo.Abp.Vfp2.Repositories
         [Fact]
         public override async Task InsertAsync()
         {
-            var person = new Person(Guid.NewGuid(), "New Person", 35);
+            var person = new Person(Guid.NewGuid().ToString(), "New Person", 35);
             person.Phones.Add(new Phone(person.Id, "1234567890"));
 
             await PersonRepository.InsertAsync(person);
 
-            person = await PersonRepository.FindAsync(person.Id);
+            person = await PersonRepository.FindAsync(w => w.Id.ToString() == person.Id);
             person.ShouldNotBeNull();
             person.Name.ShouldBe("New Person");
             person.Phones.Count.ShouldBe(1);

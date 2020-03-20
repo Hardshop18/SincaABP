@@ -2,16 +2,14 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using MongoDB.Driver;
-using MongoDB.Driver.Linq;
 using Volo.Abp.Domain.Repositories.Vfp2;
 using Volo.Abp.Vfp2;
 using Volo.Abp.TestApp.Domain;
 using System.Linq;
-using System.Threading;
 
 namespace Volo.Abp.TestApp.Vfp2
 {
-    public class CityRepository : VfpRepository<ITestAppVfpContext, City, Guid>, ICityRepository
+    public class CityRepository : VfpRepository<ITestAppVfpContext, City, string>, ICityRepository
     {
         public CityRepository(IVfpContextProvider<ITestAppVfpContext> dbContextProvider)
             : base(dbContextProvider)
