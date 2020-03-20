@@ -6,6 +6,9 @@ namespace SQLiteAspNetCoreDemo
     {
         public DbSet<Employee> Employees { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=sqlitedemo.db");
+        {
+            string path = System.Environment.CurrentDirectory.ToString()+"\\..\\..\\..\\";
+            options.UseSqlite($"Data Source={path}sqlitedemo.db");
+        }
     }
 }
