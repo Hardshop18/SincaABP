@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
@@ -13,8 +14,8 @@ namespace Volo.Abp.Domain.Repositories.Vfp
         where TVfpContext : VfpContext
         where TEntity : class, IEntity
     {
-        //TODO: Add dbcontext just like mongodb implementation!
-
+        //TODO: Add dbcontext just like VFP implementation!
+        public DbSet<TEntity> DbSet;
         public virtual IVfpCollection<TEntity> Collection => Database.Collection<TEntity>();
 
         public virtual IVfp Database => DatabaseProvider.GetDatabase();
@@ -28,7 +29,7 @@ namespace Volo.Abp.Domain.Repositories.Vfp
 
         protected override IQueryable<TEntity> GetQueryable()
         {
-            return ApplyDataFilters(Collection.AsQueryable());
+            return ApplyDataFilters(DbSet.AsQueryable());
         }
 
         public override Task<TEntity> FindAsync(
@@ -36,15 +37,15 @@ namespace Volo.Abp.Domain.Repositories.Vfp
             bool includeDetails = true,
             CancellationToken cancellationToken = default)
         {
-            return Task.FromResult(Collection.AsQueryable().Where(predicate).SingleOrDefault());
+            return Task.FromResult(DbSet.Where(predicate).SingleOrDefault());
         }
 
         public override Task DeleteAsync(Expression<Func<TEntity, bool>> predicate, bool autoSave = false, CancellationToken cancellationToken = default)
         {
-            var entities = Collection.AsQueryable().Where(predicate).ToList();
+            var entities = DbSet.AsQueryable().Where(predicate).ToList();
             foreach (var entity in entities)
             {
-                Collection.Remove(entity);
+                DbSet.Remove(entity);
             }
 
             return Task.CompletedTask;
@@ -52,30 +53,30 @@ namespace Volo.Abp.Domain.Repositories.Vfp
 
         public override Task<TEntity> InsertAsync(TEntity entity, bool autoSave = false, CancellationToken cancellationToken = default)
         {
-            Collection.Add(entity);
+            DbSet.Add(entity);
             return Task.FromResult(entity);
         }
 
         public override Task<TEntity> UpdateAsync(TEntity entity, bool autoSave = false, CancellationToken cancellationToken = default)
         {
-            Collection.Update(entity);
+            DbSet.Add(entity);// Update
             return Task.FromResult(entity);
         }
 
         public override Task DeleteAsync(TEntity entity, bool autoSave = false, CancellationToken cancellationToken = default)
         {
-            Collection.Remove(entity);
+            DbSet.Remove(entity);
             return Task.CompletedTask;
         }
 
         public override Task<List<TEntity>> GetListAsync(bool includeDetails = false, CancellationToken cancellationToken = default)
         {
-            return Task.FromResult(Collection.ToList());
+            return Task.FromResult(DbSet.ToList());
         }
 
         public override Task<long> GetCountAsync(CancellationToken cancellationToken = default)
         {
-            return Task.FromResult(Collection.LongCount());
+            return Task.FromResult(DbSet.LongCount());
         }
     }
 

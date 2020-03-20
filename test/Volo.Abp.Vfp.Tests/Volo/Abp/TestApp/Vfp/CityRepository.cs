@@ -17,7 +17,7 @@ namespace Volo.Abp.TestApp.Vfp
 
         public Task<City> FindByNameAsync(string name)
         {
-            return Task.FromResult(Collection.FirstOrDefault(c => c.Name == name));
+            return Task.FromResult(DbSet.FirstOrDefault(c => c.Name == name));
         }
 
         public async Task<List<Person>> GetPeopleInTheCityAsync(string cityName)

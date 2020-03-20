@@ -6,7 +6,7 @@ namespace Volo.Abp.Vfp
     {
         protected override void SetAbpApplicationCreationOptions(AbpApplicationCreationOptions options)
         {
-            //options. UseAutofac();
+            options.UseAutofac();
         }
     }
 }
