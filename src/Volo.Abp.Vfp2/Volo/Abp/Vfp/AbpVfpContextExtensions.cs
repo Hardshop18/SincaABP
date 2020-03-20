@@ -2,7 +2,7 @@ namespace Volo.Abp.Vfp2
 {
     public static class AbpVfpContextExtensions
     {
-        public static AbpVfpContext ToAbpMongoDbContext(this IAbpVfpContext dbContext)
+        public static AbpVfpContext ToAbpVfpContext(this IAbpVfpContext dbContext)
         {
             var abpVfpContext = dbContext as AbpVfpContext;
 

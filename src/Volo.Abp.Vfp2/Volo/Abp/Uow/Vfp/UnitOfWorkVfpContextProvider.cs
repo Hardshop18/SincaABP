@@ -2,6 +2,7 @@
 using System.Data.Entity;
 using Microsoft.Extensions.DependencyInjection;
 using MongoDB.Driver;
+using VfpEntityFrameworkProvider;
 using Volo.Abp.Data;
 using Volo.Abp.Vfp2;
 
@@ -44,11 +45,11 @@ namespace Volo.Abp.Uow.Vfp2
                 dbContextKey,
                 () =>
                 {
-                    var database = new MongoClient(mongoUrl).GetDatabase(databaseName);
+                    var database = new DbContext( new VfpConnection(@"D:\GitHub\dados\SincaTeste.dbc"), true);
 
                     var dbContext = unitOfWork.ServiceProvider.GetRequiredService<TVfpContext>();
 
-                    dbContext.ToAbpVfpContext().InitializeDatabase(database);
+                    dbContext.ToAbpVfpContext().InitializeDatabase(database.Database);
 
                     return new VfpDatabaseApi<TVfpContext>(dbContext);
                 });

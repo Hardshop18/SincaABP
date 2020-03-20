@@ -27,7 +27,7 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
         where TVfpContext : IAbpVfpContext
         where TEntity : class, IEntity
     {
-        public DbSet<TEntity> Collection;
+        public DbSet<TEntity> Collection { get; }
 
         public virtual Database Database => DbContext.Database;
 
@@ -320,9 +320,8 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
             bool includeDetails = true,
             CancellationToken cancellationToken = default)
         {
-            return Collection
-                .Find(CreateEntityFilter(id, true))
-                .FirstOrDefault();
+            TEntity entity = Collection.Find(id);
+            return await Task.Run(() => entity);
         }
 
         public virtual Task DeleteAsync(
@@ -331,7 +330,8 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
             CancellationToken cancellationToken = default)
         {
             var entity = Collection.Find(id);
-            return Collection.Remove(entity);
+            Collection.Remove(entity);
+            return Task.Run(() => entity);
         }
 
         protected override FilterDefinition<TEntity> CreateEntityFilter(TEntity entity, bool withConcurrencyStamp = false, string concurrencyStamp = null)

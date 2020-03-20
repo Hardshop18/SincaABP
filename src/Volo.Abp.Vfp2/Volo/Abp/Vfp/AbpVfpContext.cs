@@ -27,11 +27,6 @@ namespace Volo.Abp.Vfp2
             Database = database;
         }
 
-        public virtual DbSet<T> Collection<T>()
-        {
-            return Database.GetCollection<T>(GetCollectionName<T>());
-        }
-
         protected virtual string GetCollectionName<T>()
         {
             return GetEntityModel<T>().CollectionName;
