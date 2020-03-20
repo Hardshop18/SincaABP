@@ -7,6 +7,10 @@
     <RootNamespace />
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\..\src\Volo.Abp.Autofac\Volo.Abp.Autofac.csproj" />
     <ProjectReference Include="..\..\src\Volo.Abp.Vfp2\Volo.Abp.Vfp2.csproj" />
@@ -15,8 +19,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mongo2Go" Version="2.2.12" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.4.0" />
+    <PackageReference Include="VfpClient" Version="1.0.1-beta" />
+    <PackageReference Include="VfpEntityFrameworkProvider2" Version="3.0.2-beta" />
   </ItemGroup>
 
 </Project>

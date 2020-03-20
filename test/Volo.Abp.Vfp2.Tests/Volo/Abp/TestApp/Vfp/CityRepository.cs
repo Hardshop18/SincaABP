@@ -4,14 +4,16 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using MongoDB.Driver.Linq;
 using Volo.Abp.Domain.Repositories.Vfp2;
-using Volo.Abp.MongoDB;
+using Volo.Abp.Vfp2;
 using Volo.Abp.TestApp.Domain;
+using System.Linq;
+using System.Threading;
 
 namespace Volo.Abp.TestApp.Vfp2
 {
-    public class CityRepository : MongoDbRepository<ITestAppMongoDbContext, City, Guid>, ICityRepository
+    public class CityRepository : VfpRepository<ITestAppVfpContext, City, Guid>, ICityRepository
     {
-        public CityRepository(IMongoDbContextProvider<ITestAppMongoDbContext> dbContextProvider)
+        public CityRepository(IVfpContextProvider<ITestAppVfpContext> dbContextProvider)
             : base(dbContextProvider)
         {
 
@@ -19,13 +21,15 @@ namespace Volo.Abp.TestApp.Vfp2
 
         public async Task<City> FindByNameAsync(string name)
         {
-            return await (await Collection.FindAsync(c => c.Name == name)).FirstOrDefaultAsync();
+            var city = Collection.FirstOrDefault(c => c.Name == name);
+            return await Task.Run(() => city);
         }
 
         public async Task<List<Person>> GetPeopleInTheCityAsync(string cityName)
         {
             var city = await FindByNameAsync(cityName);
-            return await DbContext.People.AsQueryable().Where(p => p.CityId == city.Id).ToListAsync();
+            var cities = DbContext.People.WhereIf(true, p => p.CityId == city.Id).ToList();
+            return await Task.Run( () => cities);
         }
     }
 }
