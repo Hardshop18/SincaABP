@@ -4,7 +4,7 @@ using Volo.Abp.Vfp;
 
 namespace Volo.Abp.Uow.Vfp
 {
-    public class UnitOfWorkVfpProvider<TVfpContext> : IDatabaseProvider<TVfpContext>
+    public class UnitOfWorkVfpProvider<TVfpContext> : IVfpProvider<TVfpContext>
         where TVfpContext : VfpContext
     {
         public TVfpContext DbContext { get; }

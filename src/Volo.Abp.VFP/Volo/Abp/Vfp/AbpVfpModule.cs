@@ -12,7 +12,7 @@ namespace Volo.Abp.Vfp
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            context.Services.TryAddTransient(typeof(IDatabaseProvider<>), typeof(UnitOfWorkVfpProvider<>));
+            context.Services.TryAddTransient(typeof(IVfpProvider<>), typeof(UnitOfWorkVfpProvider<>));
             context.Services.TryAddTransient(typeof(IVfpCollection<>), typeof(VfpCollection<>));
         }
     }

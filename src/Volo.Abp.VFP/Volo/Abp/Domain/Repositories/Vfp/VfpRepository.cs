@@ -19,9 +19,9 @@ namespace Volo.Abp.Domain.Repositories.Vfp
 
         public virtual IVfp Database => DatabaseProvider.GetDatabase();
 
-        protected IDatabaseProvider<TVfpContext> DatabaseProvider { get; }
+        protected IVfpProvider<TVfpContext> DatabaseProvider { get; }
 
-        public VfpRepository(IDatabaseProvider<TVfpContext> databaseProvider)
+        public VfpRepository(IVfpProvider<TVfpContext> databaseProvider)
         {
             DatabaseProvider = databaseProvider;
         }
@@ -83,7 +83,7 @@ namespace Volo.Abp.Domain.Repositories.Vfp
         where TMemoryDbContext : VfpContext
         where TEntity : class, IEntity<TKey>
     {
-        public VfpRepository(IDatabaseProvider<TMemoryDbContext> databaseProvider)
+        public VfpRepository(IVfpProvider<TMemoryDbContext> databaseProvider)
             : base(databaseProvider)
         {
         }

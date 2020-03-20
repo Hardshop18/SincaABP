@@ -16,8 +16,8 @@ namespace Volo.Abp.Vfp
             return EmptyTypeList;
         }
 
-        public VfpContext(VfpConnection connection)
-            : base(connection, true)
+        public VfpContext(string connection)
+            : base(new VfpConnection(connection), true)
         {
         }
     }
