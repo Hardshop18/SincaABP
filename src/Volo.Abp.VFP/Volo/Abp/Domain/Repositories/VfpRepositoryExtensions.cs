@@ -22,13 +22,13 @@ namespace Volo.Abp.Domain.Repositories
         public static IVfpRepository<TEntity, TKey> ToVfpRepository<TEntity, TKey>(this IBasicRepository<TEntity, TKey> repository)
             where TEntity : class, IEntity<TKey>
         {
-            var memoryDbRepository = repository as IVfpRepository<TEntity, TKey>;
-            if (memoryDbRepository == null)
+            var vfpRepository = repository as IVfpRepository<TEntity, TKey>;
+            if (vfpRepository == null)
             {
                 throw new ArgumentException("Given repository does not implement " + typeof(IVfpRepository<TEntity, TKey>).AssemblyQualifiedName, nameof(repository));
             }
 
-            return memoryDbRepository;
+            return vfpRepository;
         }
     }
 }

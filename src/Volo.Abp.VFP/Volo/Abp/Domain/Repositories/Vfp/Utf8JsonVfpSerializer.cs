@@ -10,11 +10,11 @@ namespace Volo.Abp.Domain.Repositories.Vfp
 {
     public class Utf8JsonVfpSerializer : IVfpSerializer, ITransientDependency
     {
-        private static readonly JsonSerializerSettings MemoryDbSerializerSettings;
+        private static readonly JsonSerializerSettings VfpSerializerSettings;
 
         static Utf8JsonVfpSerializer()
         {
-            MemoryDbSerializerSettings = new JsonSerializerSettings
+            VfpSerializerSettings = new JsonSerializerSettings
             {
                 ContractResolver = new ResolverWithPrivateSetters(),
                 ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor
@@ -23,14 +23,14 @@ namespace Volo.Abp.Domain.Repositories.Vfp
 
         byte[] IVfpSerializer.Serialize(object obj)
         {
-            var jsonString = JsonConvert.SerializeObject(obj, MemoryDbSerializerSettings);
+            var jsonString = JsonConvert.SerializeObject(obj, VfpSerializerSettings);
             return Encoding.UTF8.GetBytes(jsonString);
         }
 
         public object Deserialize(byte[] value, Type type)
         {
             var jsonString = Encoding.UTF8.GetString(value);
-            return JsonConvert.DeserializeObject(jsonString, type, MemoryDbSerializerSettings);
+            return JsonConvert.DeserializeObject(jsonString, type, VfpSerializerSettings);
         }
 
         public class ResolverWithPrivateSetters : DefaultContractResolver

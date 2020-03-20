@@ -79,11 +79,11 @@ namespace Volo.Abp.Domain.Repositories.Vfp
         }
     }
 
-    public class VfpRepository<TMemoryDbContext, TEntity, TKey> : VfpRepository<TMemoryDbContext, TEntity>, IVfpRepository<TEntity, TKey>
-        where TMemoryDbContext : VfpContext
+    public class VfpRepository<TVfpContext, TEntity, TKey> : VfpRepository<TVfpContext, TEntity>, IVfpRepository<TEntity, TKey>
+        where TVfpContext : VfpContext
         where TEntity : class, IEntity<TKey>
     {
-        public VfpRepository(IVfpProvider<TMemoryDbContext> databaseProvider)
+        public VfpRepository(IVfpProvider<TVfpContext> databaseProvider)
             : base(databaseProvider)
         {
         }

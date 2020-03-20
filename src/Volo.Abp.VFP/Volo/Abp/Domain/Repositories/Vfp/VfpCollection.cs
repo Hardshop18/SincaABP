@@ -10,18 +10,18 @@ namespace Volo.Abp.Domain.Repositories.Vfp
     {
         private readonly Dictionary<string, byte[]> _dictionary = new Dictionary<string, byte[]>();
 
-        private readonly IVfpSerializer _memoryDbSerializer;
+        private readonly IVfpSerializer _vfpSerializer;
 
-        public VfpCollection(IVfpSerializer memoryDbSerializer)
+        public VfpCollection(IVfpSerializer vfpSerializer)
         {
-            _memoryDbSerializer = memoryDbSerializer;
+            _vfpSerializer = vfpSerializer;
         }
 
         public IEnumerator<TEntity> GetEnumerator()
         {
             foreach (var entity in _dictionary.Values)
             {
-                yield return _memoryDbSerializer.Deserialize(entity, typeof(TEntity)).As<TEntity>();
+                yield return _vfpSerializer.Deserialize(entity, typeof(TEntity)).As<TEntity>();
             }
         }
 
@@ -32,14 +32,14 @@ namespace Volo.Abp.Domain.Repositories.Vfp
 
         public void Add(TEntity entity)
         {
-            _dictionary.Add(GetEntityKey(entity), _memoryDbSerializer.Serialize(entity));
+            _dictionary.Add(GetEntityKey(entity), _vfpSerializer.Serialize(entity));
         }
 
         public void Update(TEntity entity)
         {
             if (_dictionary.ContainsKey(GetEntityKey(entity)))
             {
-                _dictionary[GetEntityKey(entity)] = _memoryDbSerializer.Serialize(entity);
+                _dictionary[GetEntityKey(entity)] = _vfpSerializer.Serialize(entity);
             }
         }
 

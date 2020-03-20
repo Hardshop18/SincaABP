@@ -11,18 +11,18 @@ namespace Volo.Abp.Uow.Vfp
         
         private readonly IUnitOfWorkManager _unitOfWorkManager;
         private readonly IConnectionStringResolver _connectionStringResolver;
-        private readonly VfpManager _memoryDatabaseManager;
+        private readonly VfpManager _vfpManager;
 
         public UnitOfWorkVfpProvider(
             IUnitOfWorkManager unitOfWorkManager,
             IConnectionStringResolver connectionStringResolver,
             TVfpContext dbContext, 
-            VfpManager memoryDatabaseManager)
+            VfpManager vfpManager)
         {
             _unitOfWorkManager = unitOfWorkManager;
             _connectionStringResolver = connectionStringResolver;
             DbContext = dbContext;
-            _memoryDatabaseManager = memoryDatabaseManager;
+            _vfpManager = vfpManager;
         }
 
         public IVfp GetDatabase()
@@ -39,7 +39,7 @@ namespace Volo.Abp.Uow.Vfp
             var databaseApi = unitOfWork.GetOrAddDatabaseApi(
                 dbContextKey,
                 () => new VfpDatabaseApi(
-                    _memoryDatabaseManager.Get(connectionString)
+                    _vfpManager.Get(connectionString)
                 ));
 
             return ((VfpDatabaseApi)databaseApi).Database;
