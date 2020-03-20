@@ -1,16 +1,23 @@
 using System.Collections.Generic;
-using MongoDB.Driver;
+using System.Data.Entity;
+using VfpEntityFrameworkProvider;
 using Volo.Abp.DependencyInjection;
 
 namespace Volo.Abp.Vfp2
 {
-    public abstract class AbpVfpContext : IAbpVfpContext, ITransientDependency
+    [DbConfigurationType(typeof(VfpDbConfiguration))]
+    public abstract class AbpVfpContext : DbContext, IAbpVfpContext, ITransientDependency
     {
         public IVfpModelSource ModelSource { get; set; }
 
         public IVfpDatabase Database { get; private set; }
 
-        protected internal virtual void CreateModel(IMongoModelBuilder modelBuilder)
+        public AbpVfpContext(string connection)
+            : base(new VfpConnection(connection), true)
+        {
+        }
+
+        protected internal virtual void CreateModel(IVfpModelBuilder modelBuilder)
         {
 
         }

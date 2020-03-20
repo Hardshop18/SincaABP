@@ -327,10 +327,10 @@ namespace Volo.Abp.Domain.Repositories.Vfp2
         }
     }
 
-    public class VfpRepository<TMongoDbContext, TEntity, TKey>
-        : VfpRepository<TMongoDbContext, TEntity>,
+    public class VfpRepository<TVfpContext, TEntity, TKey>
+        : VfpRepository<TVfpContext, TEntity>,
         IVfpRepository<TEntity, TKey>
-        where TMongoDbContext : IAbpVfpContext
+        where TVfpContext : IAbpVfpContext
         where TEntity : class, IEntity<TKey>
     {
         public VfpRepository(IVfpContextProvider<TVfpContext> dbContextProvider)

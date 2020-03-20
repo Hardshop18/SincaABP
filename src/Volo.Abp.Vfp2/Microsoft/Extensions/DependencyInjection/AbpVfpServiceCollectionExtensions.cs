@@ -10,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection
         public static IServiceCollection AddVfpContext<TVfpContext>(this IServiceCollection services, Action<IAbpVfpContextRegistrationOptionsBuilder> optionsBuilder = null) //Created overload instead of default parameter
             where TVfpContext : AbpVfpContext
         {
-            var options = new AbpMongoDbContextRegistrationOptions(typeof(TVfpContext), services);
+            var options = new AbpVfpContextRegistrationOptions(typeof(TVfpContext), services);
             optionsBuilder?.Invoke(options);
 
             foreach (var dbContextType in options.ReplacedDbContextTypes)

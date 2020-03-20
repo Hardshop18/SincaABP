@@ -1,6 +1,5 @@
 ﻿using System;
-using MongoDB.Driver;
-using MongoDB.Driver.Linq;
+using System.Linq;
 using Volo.Abp.Domain.Entities;
 using Volo.Abp.Domain.Repositories.Vfp2;
 
@@ -20,7 +19,7 @@ namespace Volo.Abp.Domain.Repositories
             return repository.ToVfpRepository().Collection;
         }
 
-        public static IVfpQueryable<TEntity> GetVfpQueryable<TEntity, TKey>(this IBasicRepository<TEntity, TKey> repository)
+        public static IQueryable<TEntity> GetVfpQueryable<TEntity, TKey>(this IBasicRepository<TEntity, TKey> repository)
             where TEntity : class, IEntity<TKey>
         {
             return repository.ToVfpRepository().GetVfpQueryable();
