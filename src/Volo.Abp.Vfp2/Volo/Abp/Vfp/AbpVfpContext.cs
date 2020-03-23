@@ -12,8 +12,8 @@ namespace Volo.Abp.Vfp2
 
         public Database Database { get; private set; }
 
-        public AbpVfpContext(string connection)
-            : base(new VfpConnection(connection), true)
+        public AbpVfpContext()
+            : base(new VfpConnection(@"D:\GitHub\dados\SincaTeste.dbc"), true)
         {
         }
 

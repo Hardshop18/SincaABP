@@ -1,5 +1,5 @@
 using System;
-using MongoDB.Bson.Serialization;
+//using MongoDB.Bson.Serialization;
 
 namespace Volo.Abp.Vfp2
 {
@@ -9,7 +9,7 @@ namespace Volo.Abp.Vfp2
 
         string CollectionName { get; set; }
 
-        BsonClassMap<TEntity> BsonMap { get; }
+        //BsonClassMap<TEntity> BsonMap { get; }
     }
 
     public interface IVfpEntityModelBuilder
@@ -18,6 +18,6 @@ namespace Volo.Abp.Vfp2
 
         string CollectionName { get; set; }
 
-        BsonClassMap BsonMap { get; }
+        //BsonClassMap BsonMap { get; }
     }
 }

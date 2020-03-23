@@ -6,7 +6,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Volo.Abp.Vfp</AssemblyName>
-    <PackageId>Volo.Abp.MemoryDb</PackageId>
+    <PackageId>Volo.Abp.Vfp</PackageId>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
@@ -17,6 +17,10 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Volo\Abp\Domain\Repositories\Vfp\InVfpIdGenerator.cs~RF1bc7b1c.TMP" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="VfpClient" Version="1.0.1-beta" />

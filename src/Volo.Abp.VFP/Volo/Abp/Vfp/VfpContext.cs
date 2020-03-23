@@ -16,8 +16,8 @@ namespace Volo.Abp.Vfp
             return EmptyTypeList;
         }
 
-        public VfpContext(string connection)
-            : base(new VfpConnection(connection), true)
+        public VfpContext()
+            : base(new VfpConnection(@"D:\GitHub\dados\SincaTeste.dbc"), true)
         {
         }
     }

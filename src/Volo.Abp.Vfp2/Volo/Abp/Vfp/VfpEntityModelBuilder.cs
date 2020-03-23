@@ -1,4 +1,4 @@
-using MongoDB.Bson.Serialization;
+//using MongoDB.Bson.Serialization;
 using System;
 
 namespace Volo.Abp.Vfp2
@@ -13,21 +13,21 @@ namespace Volo.Abp.Vfp2
 
         public string CollectionName { get; set; }
 
-        BsonClassMap IVfpEntityModelBuilder.BsonMap => _bsonClassMap;
+        /*BsonClassMap IVfpEntityModelBuilder.BsonMap => _bsonClassMap;
         BsonClassMap<TEntity> IVfpEntityModelBuilder<TEntity>.BsonMap => _bsonClassMap;
 
-        private readonly BsonClassMap<TEntity> _bsonClassMap;
+        private readonly BsonClassMap<TEntity> _bsonClassMap;*/
 
         public VfpEntityModelBuilder()
         {
             EntityType = typeof(TEntity);
-            _bsonClassMap = new BsonClassMap<TEntity>();
-            _bsonClassMap.ConfigureAbpConventions();
+            /*_bsonClassMap = new BsonClassMap<TEntity>();
+            _bsonClassMap.ConfigureAbpConventions();*/
         }
 
-        public BsonClassMap GetMap()
+        /*public BsonClassMap GetMap()
         {
             return _bsonClassMap;
-        }
+        }*/
     }
 }

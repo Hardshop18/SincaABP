@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
 using Microsoft.Extensions.DependencyInjection;
-using MongoDB.Driver;
 using VfpEntityFrameworkProvider;
 using Volo.Abp.Data;
 using Volo.Abp.Vfp2;
@@ -33,8 +32,8 @@ namespace Volo.Abp.Uow.Vfp2
             var connectionString = _connectionStringResolver.Resolve<TVfpContext>();
             var dbContextKey = $"{typeof(TVfpContext).FullName}_{connectionString}";
 
-            var mongoUrl = new MongoUrl(connectionString);
-            var databaseName = mongoUrl.DatabaseName;
+            //var mongoUrl = new MongoUrl(connectionString);
+            string databaseName = @"D:\GitHub\dados\SincaTeste.dbc"; //mongoUrl.DatabaseName;
             if (databaseName.IsNullOrWhiteSpace())
             {
                 databaseName = ConnectionStringNameAttribute.GetConnStringName<TVfpContext>();

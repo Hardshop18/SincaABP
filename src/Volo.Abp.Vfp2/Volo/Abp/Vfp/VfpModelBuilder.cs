@@ -1,4 +1,4 @@
-using MongoDB.Bson.Serialization;
+//using MongoDB.Bson.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
@@ -29,7 +29,7 @@ namespace Volo.Abp.Vfp2
 
                 var baseClasses = new List<Type>();
 
-                foreach (var entityModel in entityModels.Values)
+                /*foreach (var entityModel in entityModels.Values)
                 {
                     var map = entityModel.As<IHasBsonClassMap>().GetMap();
                     if (!BsonClassMap.IsClassMapRegistered(map.ClassType))
@@ -50,7 +50,7 @@ namespace Volo.Abp.Vfp2
                         map.ConfigureAbpConventions();
                         BsonClassMap.RegisterClassMap(map);
                     }
-                }
+                }*/
 
                 return new VfpContextModel(entityModels);
             }

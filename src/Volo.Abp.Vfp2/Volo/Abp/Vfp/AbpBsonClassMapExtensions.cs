@@ -1,13 +1,12 @@
 ﻿using System;
 using System.Reflection;
-using MongoDB.Bson.Serialization;
 using Volo.Abp.Data;
 
 namespace Volo.Abp.Vfp2
 {
     public static class AbpBsonClassMapExtensions
     {
-        public static void ConfigureAbpConventions(this BsonClassMap map)
+        /*public static void ConfigureAbpConventions(this BsonClassMap map)
         {
             map.AutoMap();
             map.TryConfigureExtraProperties();
@@ -54,6 +53,6 @@ namespace Volo.Abp.Vfp2
             map.MapExtraElementsMember(property);
 
             return true;
-        }
+        }*/
     }
 }

@@ -10,6 +10,11 @@ namespace Volo.Abp.Domain.Repositories.Vfp
 
         public TKey GenerateNext<TKey>()
         {
+            if (typeof(TKey) == typeof(string))
+            {
+                return (TKey)(object)Guid.NewGuid().ToString();
+            }
+
             if (typeof(TKey) == typeof(Guid))
             {
                 return (TKey)(object)Guid.NewGuid();

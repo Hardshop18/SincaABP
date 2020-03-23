@@ -19,7 +19,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MongoDB.Driver" Version="2.10.0" />
     <PackageReference Include="VfpClient" Version="1.0.1-beta" />
     <PackageReference Include="VfpEntityFrameworkProvider2" Version="3.0.2-beta" />
   </ItemGroup>
