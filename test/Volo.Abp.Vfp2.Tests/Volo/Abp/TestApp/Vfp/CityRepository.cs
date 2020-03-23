@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using MongoDB.Driver;
 using Volo.Abp.Domain.Repositories.Vfp2;
 using Volo.Abp.Vfp2;
-using Volo.Abp.TestApp.Domain;
+using Volo.Abp.TestApp2.Domain;
 using System.Linq;
 
 namespace Volo.Abp.TestApp.Vfp2

@@ -3,7 +3,9 @@ using System.Threading.Tasks;
 using Shouldly;
 using Volo.Abp.Domain.Repositories;
 using Volo.Abp.Modularity;
-using Volo.Abp.TestApp.Domain;
+using Volo.Abp.TestApp2;
+using Volo.Abp.TestApp2.Domain;
+using Volo.Abp.TestApp2.Testing;
 using Xunit;
 
 namespace Volo.Abp.TestApp.Testing

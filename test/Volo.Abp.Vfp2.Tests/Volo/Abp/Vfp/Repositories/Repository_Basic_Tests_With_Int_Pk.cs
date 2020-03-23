@@ -1,5 +1,5 @@
 ﻿using System.Threading.Tasks;
-using Volo.Abp.TestApp.Testing;
+using Volo.Abp.TestApp2.Testing;
 using Xunit;
 
 namespace Volo.Abp.Vfp2.Repositories

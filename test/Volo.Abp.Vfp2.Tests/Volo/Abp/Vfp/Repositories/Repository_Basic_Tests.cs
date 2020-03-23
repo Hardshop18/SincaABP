@@ -2,9 +2,9 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Shouldly;
-using Volo.Abp.TestApp;
-using Volo.Abp.TestApp.Domain;
-using Volo.Abp.TestApp.Testing;
+using Volo.Abp.TestApp2;
+using Volo.Abp.TestApp2.Domain;
+using Volo.Abp.TestApp2.Testing;
 using Xunit;
 
 namespace Volo.Abp.Vfp2.Repositories

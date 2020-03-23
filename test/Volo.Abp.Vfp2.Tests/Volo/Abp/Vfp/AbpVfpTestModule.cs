@@ -2,8 +2,8 @@
 using Microsoft.Extensions.DependencyInjection;
 using Volo.Abp.Data;
 using Volo.Abp.Modularity;
-using Volo.Abp.TestApp;
-using Volo.Abp.TestApp.Domain;
+using Volo.Abp.TestApp2;
+using Volo.Abp.TestApp2.Domain;
 using Volo.Abp.TestApp.Vfp2;
 
 namespace Volo.Abp.Vfp2

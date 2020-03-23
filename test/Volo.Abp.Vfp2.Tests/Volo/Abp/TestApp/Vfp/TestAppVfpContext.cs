@@ -1,6 +1,6 @@
 ﻿using Volo.Abp.Data;
 using Volo.Abp.Vfp2;
-using Volo.Abp.TestApp.Domain;
+using Volo.Abp.TestApp2.Domain;
 using System.Data.Entity;
 
 namespace Volo.Abp.TestApp.Vfp2
@@ -8,7 +8,7 @@ namespace Volo.Abp.TestApp.Vfp2
     [ConnectionStringName("TestApp")]
     public class TestAppVfpContext : AbpVfpContext, ITestAppVfpContext
     {
-        public TestAppVfpContext() : base(@"D:\GitHub\dados\SincaTeste.dbc")
+        public TestAppVfpContext() : base()
         {
         }
 

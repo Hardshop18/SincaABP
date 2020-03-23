@@ -1,4 +1,4 @@
-﻿using Volo.Abp.TestApp.Testing;
+﻿using Volo.Abp.TestApp2.Testing;
 
 namespace Volo.Abp.Vfp2.Uow
 {

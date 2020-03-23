@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using Volo.Abp.Domain.Repositories.Vfp;
 using Volo.Abp.Vfp;
-using Volo.Abp.TestApp.Domain;
+using Volo.Abp.TestApp2.Domain;
 
 namespace Volo.Abp.TestApp.Vfp
 {
-    public class CityRepository : VfpRepository<TestAppVfpContext, City, Guid>, ICityRepository
+    public class CityRepository : VfpRepository<TestAppVfpContext, City, string>, ICityRepository
     {
         public CityRepository(IVfpProvider<TestAppVfpContext> databaseProvider) 
             : base(databaseProvider)

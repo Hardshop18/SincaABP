@@ -4,8 +4,8 @@ using Volo.Abp.Modularity;
 using Volo.Abp.TestApp.Vfp;
 using Volo.Abp.Data;
 using Volo.Abp.Autofac;
-using Volo.Abp.TestApp;
-using Volo.Abp.TestApp.Domain;
+using Volo.Abp.TestApp2;
+using Volo.Abp.TestApp2.Domain;
 
 namespace Volo.Abp.Vfp
 {
