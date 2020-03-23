@@ -12,9 +12,6 @@ namespace Volo.Abp.TestApp.Vfp
 
         public DbSet<EntityWithIntPk> Cities { get; set; }
 
-        /*public TestAppVfpContext() : base(@"D:\GitHub\dados\SincaTeste.dbc")
-        { }*/
-
         public TestAppVfpContext(string cs) : base(cs)
         { }
 
@@ -26,6 +23,19 @@ namespace Volo.Abp.TestApp.Vfp
         public override IReadOnlyList<Type> GetEntityTypes()
         {
             return EntityTypeList;
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //modelBuilder. Owned<District>();
+
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Phone>().HasKey(p => new { p.PersonId, p.Number });
+
+            modelBuilder.Entity<PersonView>();
+
+            modelBuilder.Entity<City>();
         }
     }
 }

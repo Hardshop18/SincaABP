@@ -17,15 +17,15 @@ namespace Volo.Abp.Vfp
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
+            context.Services.AddVfpContext<TestAppVfpContext>(options =>
+            {
+                options.AddDefaultRepositories(true);
+                options.AddRepository<City, CityRepository>();
+            });
+
             Configure<AbpDbConnectionOptions>(options =>
             {
                 options.ConnectionStrings.Default = @"D:\GitHub\dados\SincaTeste.dbc"; 
-            });
-
-            context.Services.AddVfpContext<TestAppVfpContext>(options =>
-            {
-                options.AddDefaultRepositories();
-                options.AddRepository<City, CityRepository>();
             });
         }
     }
