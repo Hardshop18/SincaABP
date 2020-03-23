@@ -40,7 +40,7 @@ namespace Volo.Abp.TestApp2.Testing
             {
                 //TenantId = null
 
-                _fakeCurrentTenant.Id.Returns((Guid?)null);
+                //_fakeCurrentTenant.Id.Returns((Guid?)null);
 
                 var people = _personRepository.ToList();
                 people.Count.ShouldBe(1);
@@ -48,7 +48,7 @@ namespace Volo.Abp.TestApp2.Testing
 
                 //TenantId = TestDataBuilder.TenantId1
 
-                _fakeCurrentTenant.Id.Returns(TestDataBuilder.TenantId1);
+                //_fakeCurrentTenant.Id.Returns(TestDataBuilder.TenantId1);
 
                 people = _personRepository.ToList();
                 people.Count.ShouldBe(2);
@@ -57,7 +57,7 @@ namespace Volo.Abp.TestApp2.Testing
 
                 //TenantId = TestDataBuilder.TenantId2
 
-                _fakeCurrentTenant.Id.Returns(TestDataBuilder.TenantId2);
+                //_fakeCurrentTenant.Id.Returns(TestDataBuilder.TenantId2);
 
                 people = _personRepository.ToList();
                 people.Count.ShouldBe(0);

@@ -8,7 +8,7 @@ namespace Volo.Abp.TestApp2.Domain
 {
     public class Person : FullAuditedAggregateRoot<string>, IMultiTenant
     {
-        public virtual Guid? TenantId { get; set; }
+        public virtual string? TenantId { get; set; }
 
         public virtual string? CityId { get; set; }
 
@@ -28,7 +28,7 @@ namespace Volo.Abp.TestApp2.Domain
             
         }
 
-        public Person(string id, string name, int age, Guid? tenantId = null, string? cityId = null)
+        public Person(string id, string name, int age, string? tenantId = null, string? cityId = null)
             : base(id)
         {
             Name = name;

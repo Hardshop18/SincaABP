@@ -12,8 +12,10 @@ namespace Volo.Abp.TestApp.Vfp
 
         public DbSet<EntityWithIntPk> Cities { get; set; }
 
+        /*public TestAppVfpContext() : base(@"D:\GitHub\dados\SincaTeste.dbc")
+        { }*/
 
-        public TestAppVfpContext() : base(@"D:\GitHub\dados\SincaTeste.dbc")
+        public TestAppVfpContext(string cs) : base(cs)
         { }
 
         private static readonly Type[] EntityTypeList = {

@@ -6,9 +6,9 @@ namespace Volo.Abp.TestApp2.Domain
     //[Serializable] //TODO: ???
     public class PersonEto : EntityEto
     {
-        public virtual Guid? TenantId { get; set; }
+        public virtual string? TenantId { get; set; }
 
-        public virtual Guid? CityId { get; set; }
+        public virtual string? CityId { get; set; }
 
         public virtual string Name { get; set; }
 

@@ -7,7 +7,7 @@ using Volo.Abp.DependencyInjection;
 namespace Volo.Abp.Vfp
 {
     [DbConfigurationType(typeof(VfpDbConfiguration))]
-    public abstract class VfpContext : DbContext
+    public class VfpContext : DbContext
     {
         private static readonly Type[] EmptyTypeList = new Type[0];
 
@@ -16,8 +16,8 @@ namespace Volo.Abp.Vfp
             return EmptyTypeList;
         }
 
-        public VfpContext()
-            : base(new VfpConnection(@"D:\GitHub\dados\SincaTeste.dbc"), true)
+        public VfpContext(string cs)
+            : base(new VfpConnection(cs), true)
         {
         }
     }

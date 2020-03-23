@@ -8,8 +8,8 @@ namespace Volo.Abp.TestApp2
 {
     public class TestDataBuilder : ITransientDependency
     {
-        public static Guid TenantId1 { get; } = new Guid("55687dce-595c-41b4-a024-2a5e991ac8f4");
-        public static Guid TenantId2 { get; } = new Guid("f522d19f-5a86-4278-98fb-0577319c544a");
+        public static string TenantId1 { get; } = "55687dce-595c-41b4-a024-2a5e991ac8f4";
+        public static string TenantId2 { get; } = "f522d19f-5a86-4278-98fb-0577319c544a";
         public static string UserDouglasId { get; } = "1fcf46b2-28c3-48d0-8bac-fa53268a2775";
         public static string UserJohnDeletedId { get; } = "1e28ca9f-df84-4f39-83fe-f5450ecbf5d4";
 
@@ -67,8 +67,8 @@ namespace Volo.Abp.TestApp2
 
             await _personRepository.InsertAsync(new Person(UserJohnDeletedId, "John-Deleted", 33) { IsDeleted = true });
 
-            var tenant1Person1 = new Person(Guid.NewGuid().ToString(), TenantId1 + "-Person1", 42, TenantId1);
-            var tenant1Person2 = new Person(Guid.NewGuid().ToString(), TenantId1 + "-Person2", 43, TenantId1);
+            var tenant1Person1 = new Person(Guid.NewGuid().ToString(), TenantId1 + "-Person1", 42, TenantId1.ToString());
+            var tenant1Person2 = new Person(Guid.NewGuid().ToString(), TenantId1 + "-Person2", 43, TenantId1.ToString());
 
             await _personRepository.InsertAsync(tenant1Person1);
             await _personRepository.InsertAsync(tenant1Person2);

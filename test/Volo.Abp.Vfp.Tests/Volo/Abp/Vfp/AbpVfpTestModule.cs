@@ -17,11 +17,9 @@ namespace Volo.Abp.Vfp
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            var connStr = Guid.NewGuid().ToString();
-
             Configure<AbpDbConnectionOptions>(options =>
             {
-                options.ConnectionStrings.Default = connStr;
+                options.ConnectionStrings.Default = @"D:\GitHub\dados\SincaTeste.dbc"; 
             });
 
             context.Services.AddVfpContext<TestAppVfpContext>(options =>

@@ -14,7 +14,7 @@ namespace Volo.Abp.Vfp.DependencyInjection
 
         protected override IEnumerable<Type> GetEntityTypes(Type dbContextType)
         {
-            var memoryDbContext = (VfpContext)Activator.CreateInstance(dbContextType);
+            var memoryDbContext = new VfpContext(@"D:\GitHub\dados\SincaTeste.dbc");
             return memoryDbContext.GetEntityTypes();
         }
 

@@ -5,7 +5,7 @@ namespace Volo.Abp.TestApp2.Application.Dto
 {
     public class DistrictDto : EntityDto
     {
-        public Guid CityId { get; set; }
+        public string CityId { get; set; }
 
         public string Name { get; set; }
 

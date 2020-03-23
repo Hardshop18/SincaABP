@@ -34,7 +34,7 @@ namespace Volo.Abp.TestApp2.Testing
         [Fact]
         public async void Should_Set_TenantId_For_New_Person()
         {
-            _fakeCurrentTenant.Id.Returns(TestDataBuilder.TenantId1);
+            //_fakeCurrentTenant.Id.Returns(TestDataBuilder.TenantId1);
 
             var personId = Guid.NewGuid().ToString();
             await _peopleAppService.CreateAsync(new PersonDto
@@ -48,8 +48,8 @@ namespace Volo.Abp.TestApp2.Testing
 
             person.ShouldNotBeNull();
             person.TenantId.ShouldNotBeNull();
-            person.TenantId.ShouldNotBe(Guid.Empty);
-            person.TenantId.ShouldBe(TestDataBuilder.TenantId1);
+            //person.TenantId.ShouldNotBe(Guid.Empty);
+            person.TenantId.ShouldBe(TestDataBuilder.TenantId1.ToString());
         }
 
         [Fact]

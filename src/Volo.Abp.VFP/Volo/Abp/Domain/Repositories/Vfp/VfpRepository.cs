@@ -87,8 +87,8 @@ namespace Volo.Abp.Domain.Repositories.Vfp
         public VfpRepository(IVfpProvider<TVfpContext> databaseProvider)
             : base(databaseProvider)
         {
-        }
 
+        }
         public override Task<TEntity> InsertAsync(TEntity entity, bool autoSave = false, CancellationToken cancellationToken = default)
         {
             SetIdIfNeeded(entity);

@@ -12,6 +12,6 @@ namespace Volo.Abp.TestApp2.Application.Dto
 
         public int Age { get; set; }
 
-        public Guid? TenantId { get; set; }
+        public string? TenantId { get; set; }
     }
 }
